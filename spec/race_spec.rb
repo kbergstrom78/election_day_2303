@@ -5,8 +5,6 @@ require './lib/race'
 RSpec.describe Race do
   before(:each) do
     @race = Race.new("Texas Governor")
-    @candidate_1 = Candidate.new({name: "Diana D", party: :democrat})
-    @candidate_2 = Candidate.new({name: "Roberto R", party: :republican}) 
   end
   
   describe "#initialize" do
@@ -18,6 +16,16 @@ RSpec.describe Race do
       expect(@race.office).to eq("Texas Governor")
       expect(@race.candidates).to eq([])
     end
+  end
   
+  describe "#register_candidates" do
+    it "registers 2 candidates and returns their info" do
+    candidate1 = @race.register_candidate!({name: "Diana D", party: :democrat})
+    expect(candidate1).to be_a(Candidate)
+    expect(candidate1.name).to eq("Diana D")
+    expect(candidate1.party).to eq(:democrat)
+    candidate2 = @race.register_candidate!({name: "Roberto R", party: :republican})
+    expect(@race.candidates).to eq([candidate1, candidate2])
+    end
   end
 end
