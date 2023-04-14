@@ -1,11 +1,11 @@
 class Candidate
   attr_reader :name,
-              :party, 
+              :party,
               :votes
 
-  def initialize(name, party)
-    @name = name
-    @party = party
+  def initialize(candidate_details)
+    @name = candidate_details[:name]
+    @party = candidate_details[:party]
     @votes = 0
   end
 
