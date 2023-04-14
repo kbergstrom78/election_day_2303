@@ -28,6 +28,7 @@ RSpec.describe Election do
       @election.add_race(race3)
       expect(@election.races).to eq([race1, race2, race3])
     end
+  end
   
   describe "#candidates" do  
     it "lists all candidates from all races" do
