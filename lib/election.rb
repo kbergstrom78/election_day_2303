@@ -11,4 +11,14 @@ class Election
     @races << race
   end
 
+  def candidates
+    candidates = @races.flat_map do |race|
+      race.candidates.find_all do |candidate|
+        candidate
+      end
+    end
+  end
+
+  def vote_counts
+
 end
